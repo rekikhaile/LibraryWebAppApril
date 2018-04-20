@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>Add a book to the library</h1>
+    <form action="/savebook" method="post" th:object="${book}">
+        <input type="hidden" th:field="${book.id}">
+
+        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+        <label for="title">Enter a title</label>
+        <input type="text" th:field="*{title}">
+
+        <p th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></p>
+        <label for="author">Enter author</label>
+        <input type="text" th:field="*{author}">
+
+        <p th:if="${#fields.hasErrors('yearPub')}" th:errors="*{yearPub}"></p>
+        <label for="yearPub">Enter a year of publication</label>
+        <input type="text" th:field="*{yearPub}">
+
+        <p th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></p>
+        <label for="isbn">Enter ISBN</label>
+        <input type="text" th:field="*{isbn}">
+
+
+
+<!--
+        <p th:if="${#fields.hasErrors('isAvailable')}" th:errors="*{isAvailable}"></p>
+-->
+
+        <label for="available">Enter availability(true/false)</label>
+
+        <input type="checkbox" th:field="*{available}" th:check="*{available}">
+
+
+        <button type="submit">Add book</button>
+    </form>
+
+</body>
+</html>
